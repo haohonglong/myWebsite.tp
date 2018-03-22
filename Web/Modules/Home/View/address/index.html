@@ -1,0 +1,127 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{$info['title']}</title>
+		<link href="__PUBLIC__/css/base.css" rel="stylesheet" type="text/css" />
+		<script type='text/javascript' src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type='text/javascript' src='__PUBLIC__/js/lib.class.js'></script>
+		<script type='text/javascript' src='__PUBLIC__/js/Tools.class.js'></script>
+		<script type='text/javascript'>
+			var tool=new window.System.Tab();
+            $(function(){
+				tool.run({
+                        'list':$('#list .js_label'),
+                        'event':'hover',
+                        'hover':true,
+                        'class':'current',
+                        'fn':function(obj){
+                            var $mess=$(this).find('.sectionMessage-A5');
+                            $mess.show();
+                            this.menssage=$mess[0];
+                            if(obj.temp[0].menssage){
+                                $(obj.temp[0].menssage).hide();
+                                
+                            }
+                            
+                            
+                            
+                        }
+				});
+
+
+                tool.run({
+                            'list':$('.j_sectionMenuA1 dd'),
+                            'event':'click',
+                            'class':'cur',
+                            'block':$('.j_sectionBlockA1'),
+                            'fn':function(obj){
+                                var dd_idnex=$(this).index();
+                                obj.current.block.each(function(i){
+                                    if(i === dd_idnex){
+                                        $(this).show();
+                                    }else{
+                                        $(this).hide();
+                                    }
+
+                                });
+                            }
+                        });
+
+			});
+
+			function del_confirm(name){
+				return confirm("确认真的要删除"+name+"吗？");
+			}
+		</script>
+
+		<style type="text/css">
+			html,body{overflow:auto;}
+			
+		</style>
+			
+</head>
+<body>
+<div id="wrapper">
+<!--header-->
+<!--main-->	
+<div id="main">
+    <div class="content">
+	<div class="p10">
+            <div class="sectionBox sectionTitle-A2 mb20"><h2>视频地址列表</h2></div>
+		<div id="list" class="p-rel">
+                    <div class="sectionMenu-A1 j_sectionMenuA1">
+                        <dl class="border">
+                            <volist name="info.data" id="list">
+                                <if condition="$key eq 0">
+                                <dd class="cur"><else /><dd class=""></if>
+                                    <div class="title">{$list.sortName}</div>
+                                </dd>
+                            </volist>
+                            
+                        </dl>
+                    </div>
+                    
+                    <div class="sectionWrap-A6 show-url">
+                        <volist name="info.data" id="list">
+                            <if condition="$key eq 0">
+                            <div class="j_sectionBlockA1 p-rel sectionBorder-A4">
+                            <else />
+                            <div class="j_sectionBlockA1 p-rel sectionBorder-A4 none"></if>
+                                <div class="p30">
+                                    <ul class="clear sectionFloat">
+                                        <volist name="list['sorts']" id="item">
+                                            <li class="mb10">
+                                                <div class="sectionLabel js_label">
+                                                    <div class="p10 border">
+                                                        <a class="linkBlue" href="{$item.url}" target="_blank" title="">{$item.urlTitle}</a>
+                                                        
+                                                        <a class="ml10" href="{:U('Home/address/showedit',['id'=>$item['id']])}">修改</a>
+                                                        
+                                                        <a href="{:U('Home/address/del',['id'=>$item['id']])}" onclick="return del_confirm('此地址');" class="icon">ⅹ</a>
+                                                        <div class="sectionMessage-A5">
+                                                            <div class="p10 border">
+                                                                <p>
+                                                                    <strong>信息提示:</strong>
+                                                                    <span>{$item.info}</span>
+                                                                    <span class="date">{$item.date}</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                                </div>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--End main-->
+</div><!--End wrapper-->
+
+</body>
+</html>

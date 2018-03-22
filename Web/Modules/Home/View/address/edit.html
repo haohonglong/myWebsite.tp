@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{$info['title']}</title>
+		<link href="__PUBLIC__/css/base.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			html,body{overflow:auto;}
+		</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="main" class="p10">
+		<div class="sectionTitle-A1 mb10">
+			<ul class="clear">
+				<li class="current first"><span>修改地址</span></li>
+			</ul>
+		</div>
+		<div class="sectionBlock sectionForm sectionForm-A1 sectionFont">
+			<div class="p10">
+				<form action="{:U('Home/address/edit')}" method="post">
+                                    <input type="hidden" name="id" value="{$info['data']['id']}" />	
+                                    <ul>
+						<li class="clear">
+							<label class="L">地址名字：</label>
+							<input type="text" name="vidoTitle" class="text L" value="{$info['data']['name']}" />
+                            <label class="L">请选所属类：</label>
+                            <select class="L" name="sortsID">
+                                <volist name="info.sort" id="item">
+                                    <if condition="($item['id']) eq ($info['data']['sortsid'])">
+                                    <option value="{$item['id']}" selected="selected" >{$item['name']}</option>
+                                    <else />
+                                    <option value="{$item['id']}">{$item['name']}</option>
+                                    </if>
+                                </volist>
+                            </select>
+                            
+						</li>
+
+						<li class="clear">
+							<label class="L">保存日期：</label>
+							<input type="text" name="vidoDate" class="text L" value="{$info['data']['date']}" />
+						</li>
+						<li class="clear">
+							<label class="L">链接地址：</label>
+							<input type="text" name="vidoUrl" class="text L" value="{$info['data']['url']}" />
+						</li>
+						<li class="textarea clear">
+							<label class="L">备注（文字在1500字以内）</label>
+							<textarea name="info" cols="30" rows="5" class="L">{$info['data']['info']}</textarea>
+						</li>
+					</ul>
+					<div class="sectionButton sectionButton-A1">
+						<input type="submit" class="bun mr10" name="submit" value="提交"/>
+						<input type="reset" class="bun" name="submit" value="还原"/>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		
+	</div>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<assign name="item" value="$info['data']" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{$info['title']}</title>
+		<link href="__PUBLIC__/css/base.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			html,body{overflow:auto;}
+		</style>
+</head>
+<body>
+    
+<div id="wrapper">
+	<div id="main" class="p10">
+		<div class="sectionTitle-A1 mb10">
+			<ul class="clear">
+				<li class="current first"><span>修改视频</span></li>
+			</ul>
+		</div>
+		
+		<div class="sectionBlock sectionForm sectionForm-A1 sectionFont">
+			<div class="p10">
+				<form action="{:U('Home/video/edit')}" method="post">
+                                    <input type="hidden" name="id" value="{$item.id}" />
+                                    <ul>
+						<li class="clear">
+							<label class="L">视频标题：</label>
+							<input type="text" name="videoTitle" class="text L" value="{$item.title}" />
+						</li>
+						<li class="clear">
+							<label class="L">保存日期：</label>
+							<input type="text" name="videoDate" class="text L" value="{$item.video_date}" />
+						</li>
+						<li class="textarea clear">
+							<label class="L">视频源码:(550*400)</label>
+							<textarea name="videoUrl" cols="30" rows="5" class="L">{$item.source}</textarea>
+						</li>
+						
+					</ul>
+					<div class="sectionButton sectionButton-A1">
+						<input type="submit" class="bun mr10" name="submit" value="提交"/>
+						<input type="reset" class="bun" name="submit" value="还原"/>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

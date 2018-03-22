@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{$info['title']}</title>
+		<script type='text/javascript' src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type='text/javascript' src='__PUBLIC__/js/lib.class.js'></script>
+		<script type='text/javascript' src='__PUBLIC__/js/Tools.class.js'></script>
+		<link href="__PUBLIC__/css/base.css" rel="stylesheet" type="text/css" />
+		<script type='text/javascript'>
+			var tool=new window.System.Tab();
+			$(function(){
+				
+				tool.run({
+                        'list':$('.sectionTitle-A1 li'),
+                        'event':'click',
+                        'temp':$($('.sectionTitle-A1 li')[0]),
+                        'class':'current',
+                        '$block':$(".sectionBlock"),
+                        'fn':function(obj){
+                            obj.current.$block.each(function(i){
+                                if(obj.this_index==i){
+                                    $(this).show();
+                                }else{
+                                    $(this).hide();
+                                }
+                            });
+                        }
+				});
+
+				
+			
+			});
+		</script>
+		
+		<style type="text/css">
+			html,body{overflow:auto;}
+		</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="main" class="p10">
+		<div class="sectionTitle-A1 mb10">
+			<ul class="clear">
+				<li class="current first"><span>添加菜单</span></li>
+			</ul>
+		</div>
+		
+		<div class="sectionBlock sectionForm sectionForm-A1 sectionFont">
+			<div class="p10 mb20">
+                            
+				<form action="{:U('Admin/menu/add')}" method="post">
+					<ul>
+						<li class="clear">
+							<label class="L">菜单：</label>
+							<input type="text" name="name" class="text L" value="" />
+                                                        <label class="L">是否有子菜单：</label>
+                                                        <select class="L js_sortsID" name="sortsID">
+                                                            <option value="0" selected="selected" >无</option>
+                                                            <option value="1">有</option>
+                                                            
+                                                        </select>
+						</li>
+						<li class="clear">
+							<label class="L">页面地址：</label>
+							<input type="text" name="date" class="text L" value="" />
+						</li>
+						
+					</ul>
+					<div class="sectionButton sectionButton-A1">
+						<input type="submit" class="bun mr10" name="submit" value="提交"/>
+						<input type="reset" class="bun" name="submit" value="还原"/>
+						
+					</div>
+				</form>
+			</div>
+			
+
+		</div>
+		
+		
+		
+			
+		
+		
+	</div><!--#main theEnd-->
+</div><!--#wrapper theEnd-->
+
+</body>
+</html>

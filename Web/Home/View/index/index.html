@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{$info['title']}</title>
+		<link href="__PUBLIC__/css/base.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/css/homepage.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/Lly.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/menu.js"></script>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body onload="resizecontrol()" onresize="resizecontrol()">
+	<div id="wrapper">
+	<!--===============header===============-->
+		<include file="Common/header" />
+	<!--===============main===============-->	
+		<div id="main" class="clear">
+		<!--===============main_menu===============-->
+			<include file="Common/side" />
+			<!-- ===============main_content=================== -->
+			<div id="main_content">
+				<iframe name="mainframe" scrolling="no" src="{:U('Home/address/index','','')}" frameborder="0" width="100%" height="400" allowtransparency="true" id="mainframe"></iframe>
+			</div>
+			<div class="clearboth"></div>
+		</div>
+	<!-- main -->
+		<!--===============footer===============-->
+		<div class="footer">
+			<div class="inner">
+				推荐使用FireFox浏览器，1024*768以上分辨率浏览。
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
