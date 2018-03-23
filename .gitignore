@@ -1,4 +1,4 @@
 # phpstorm project files
 .idea
 # thinkphp
-Web/Runtime/*
+Web/Runtime
