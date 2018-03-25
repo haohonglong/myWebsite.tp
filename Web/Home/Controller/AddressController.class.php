@@ -40,7 +40,13 @@ class AddressController extends \Think\Controller {
                 "date" => I('post.vidoDate') ? I('post.vidoDate') : date('Y-m-d H:i:s'),
             );
 
-            $this->address->adds($info);
+            $re = $this->address->adds($info);
+            if($re){
+                echo "成功";
+            }else{
+                echo "失败";
+
+            }
         }
     }
 
