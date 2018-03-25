@@ -11,6 +11,9 @@ class AddressController extends \Think\Controller {
         
     }
 
+    /**
+     *
+     */
     public function indexAction() {
         $arr = $this->address->getAll();
         $info=[
@@ -25,6 +28,7 @@ class AddressController extends \Think\Controller {
      * 
      */
     public function addAction() {
+
         if (IS_POST) {
             $content=I('post.info');
             $sortsID=I('post.sortsID');
@@ -33,7 +37,7 @@ class AddressController extends \Think\Controller {
                 "url" => htmlspecialchars(str_replace('\\', '/',I('post.vidoUrl'))),
                 "info" => !empty($content) ? $content : "暂无备注信息！",
                 "sortsId" => !empty($sortsID) ? $sortsID : 0,
-                "date" => I('post.vidoDate') ? I('post.vidoDate') : time()
+                "date" => I('post.vidoDate') ? I('post.vidoDate') : date('Y-m-d H:i:s'),
             );
 
             $this->address->adds($info);
@@ -67,7 +71,7 @@ class AddressController extends \Think\Controller {
                 "url" => htmlspecialchars(str_replace('\\', '/',I('post.vidoUrl'))),
                 "info" => !empty($content) ? $content : "暂无备注信息！",
                 "sortsId" => !empty($sortsID) ? $sortsID : 0,
-                "date" => I('post.vidoDate') ? I('post.vidoDate') : time()
+                "date" => I('post.vidoDate') ? I('post.vidoDate') : date('Y-m-d H:i:s'),
             );
             $re=$this->address->edit($info, 'id='.I('post.id'));
             if($re){
